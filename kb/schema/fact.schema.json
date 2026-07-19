@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "fact.schema.json",
+  "title": "Fact",
+  "type": "object",
+  "required": ["id", "category", "claim", "evidence", "verification", "tags"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "category": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claim": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["url", "type"],
+        "additionalProperties": false,
+        "properties": {
+          "url": { "type": "string", "format": "uri" },
+          "type": { "enum": ["primary", "secondary", "self_reported"] }
+        }
+      }
+    },
+    "verification": {
+      "enum": ["verified", "self_reported", "in_progress"]
+    },
+    "date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}$"
+    },
+    "date_range": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}$" },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "metrics": {
+      "type": "object"
+    },
+    "gap_note": {
+      "type": "string"
+    }
+  }
+}
