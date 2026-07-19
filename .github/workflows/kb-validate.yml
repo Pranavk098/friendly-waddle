@@ -1,0 +1,36 @@
+name: kb-validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v4
+        with:
+          version: "0.11.3"
+
+      - run: uv python install 3.12
+
+      - name: Install workspace
+        run: uv sync --all-packages
+
+      - name: Lint
+        run: uv run ruff check .
+
+      - name: Type check
+        run: uv run pyright
+
+      - name: Unit tests
+        run: uv run pytest kb -v
+
+      - name: Build KB (schema + business-rule validation, token budget)
+        run: uv run python kb/build.py
+
+      - name: Evidence URL liveness check
+        run: uv run python -m kb.validate_urls
