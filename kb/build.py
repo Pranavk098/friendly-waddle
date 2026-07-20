@@ -68,7 +68,11 @@ def check_evidence_urls_live(facts: list[dict[str, Any]]) -> list[str]:
     for fact in facts:
         for evidence in fact.get("evidence", []):
             url = evidence["url"]
-            response = requests.get(url, timeout=10)
+            try:
+                response = requests.get(url, timeout=10)
+            except requests.exceptions.RequestException as exc:
+                errors.append(f"evidence URL unreachable: {url} ({exc})")
+                continue
             if not (200 <= response.status_code < 300):
                 errors.append(f"evidence URL returned {response.status_code}: {url}")
     return errors
