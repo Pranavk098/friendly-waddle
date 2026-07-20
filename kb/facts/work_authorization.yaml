@@ -1,0 +1,10 @@
+# Placeholder — HANDLE WITH CARE. Spec §1.2 says to write this "stated plainly and factually"
+# for F-1 OPT, but gives no exact wording. This is legally and personally sensitive and will be
+# spoken by a public-facing agent — write the exact phrasing yourself rather than accepting a
+# generic default. Do not treat the text below as ready to ship; it is a structural placeholder.
+- id: work-auth-placeholder
+  category: work_authorization
+  claim: "PLACEHOLDER — state your work authorization status factually and precisely (e.g. F-1 OPT: what it means procedurally for an employer, any timeline/deadlines you're comfortable disclosing publicly)."
+  evidence: []
+  verification: in_progress
+  tags: [work_authorization]

@@ -1,0 +1,7 @@
+# Placeholder. Not mentioned with any specifics in the spec.
+- id: availability-placeholder
+  category: availability
+  claim: "PLACEHOLDER — current availability/notice period, location, relocation stance."
+  evidence: []
+  verification: in_progress
+  tags: [availability]

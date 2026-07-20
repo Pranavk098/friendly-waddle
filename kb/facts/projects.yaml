@@ -1,0 +1,79 @@
+# All placeholders. Spec §1.2 names these projects but gives no descriptions, metrics, or
+# evidence links for any of them — Claude will not invent what they do. Replace each claim with
+# real, specific text (what it is, stack, outcome) and add evidence (repo/demo links).
+- id: proj-vlm-defect-detection
+  category: projects
+  claim: "PLACEHOLDER — describe vlm-defect-detection."
+  evidence: []
+  verification: in_progress
+  tags: [projects, vlm-defect-detection]
+
+- id: proj-rzv2h-inspection
+  category: projects
+  claim: "PLACEHOLDER — describe the RZ/V2H inspection system."
+  evidence: []
+  verification: in_progress
+  tags: [projects, rzv2h, computer_vision]
+
+- id: proj-renesas-model-zoo
+  category: projects
+  claim: "PLACEHOLDER — describe the Renesas Model Zoo work."
+  evidence: []
+  verification: in_progress
+  tags: [projects, renesas]
+
+- id: proj-vocalcoord
+  category: projects
+  claim: "PLACEHOLDER — describe VocalCoord."
+  evidence: []
+  verification: in_progress
+  tags: [projects, vocalcoord, langgraph]
+
+- id: proj-inverta-ai
+  category: projects
+  claim: "PLACEHOLDER — describe inverta-ai."
+  evidence: []
+  verification: in_progress
+  tags: [projects, inverta-ai]
+
+- id: proj-agentspec
+  category: projects
+  claim: "PLACEHOLDER — describe agentspec (the behavioral-contract framework this very repo's contracts/ package is built around)."
+  evidence: []
+  verification: in_progress
+  tags: [projects, agentspec]
+
+- id: proj-deductive-orchestrator
+  category: projects
+  claim: "PLACEHOLDER — describe the deductive orchestrator research project."
+  evidence: []
+  verification: in_progress
+  tags: [projects, deductive-orchestrator, research]
+
+- id: proj-resumeos
+  category: projects
+  claim: "PLACEHOLDER — describe ResumeOS."
+  evidence: []
+  verification: in_progress
+  tags: [projects, resumeos]
+
+- id: proj-openroadmap
+  category: projects
+  claim: "PLACEHOLDER — describe OpenRoadMap."
+  evidence: []
+  verification: in_progress
+  tags: [projects, openroadmap]
+
+- id: proj-drone-stack
+  category: projects
+  claim: "PLACEHOLDER — describe the drone stack project."
+  evidence: []
+  verification: in_progress
+  tags: [projects, drone, robotics]
+
+- id: proj-dhcf-rag
+  category: projects
+  claim: "PLACEHOLDER — describe the DHCF RAG project."
+  evidence: []
+  verification: in_progress
+  tags: [projects, dhcf, rag]

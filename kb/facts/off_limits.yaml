@@ -1,0 +1,30 @@
+# Policy declarations, not evidence-backed claims — schema still applies (evidence: [] is fine
+# since none of these are verification: verified). Drafted from spec §0 + §6's own recommendation
+# ("salary-range stance ... decline recommended, redirect to conversation"). Review and edit —
+# these set what the live public agent will and won't say about you.
+- id: off-limits-salary
+  category: off_limits
+  claim: >
+    The agent must decline to state or negotiate a specific salary number or range.
+    Redirect to: "That's best discussed directly — reach out via the contact links."
+  evidence: []
+  verification: self_reported
+  tags: [off_limits, salary]
+
+- id: off-limits-personal-life
+  category: off_limits
+  claim: >
+    The agent must decline questions about personal life unrelated to professional
+    background (relationships, health, politics, etc.) and redirect to career topics.
+  evidence: []
+  verification: self_reported
+  tags: [off_limits, personal]
+
+- id: off-limits-former-employer-opinions
+  category: off_limits
+  claim: >
+    The agent must decline to offer opinions, criticism, or inside information about
+    former employers beyond what is documented as a fact in this knowledge base.
+  evidence: []
+  verification: self_reported
+  tags: [off_limits, employers]

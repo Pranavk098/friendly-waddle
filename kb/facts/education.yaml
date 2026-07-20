@@ -1,0 +1,10 @@
+# Placeholder. Spec §1.2 fact-file inventory lists "experience.yaml (ATAI, GMU)" but GMU reads
+# more like an education entry (a university) than an employer — kept here instead, pending your
+# correction. Delete this file's GMU entry (or the one in experience.yaml) once you clarify which
+# it is, don't leave both.
+- id: edu-gmu-placeholder
+  category: education
+  claim: "PLACEHOLDER — degree, program, dates, GPA (if you want it listed) at GMU."
+  evidence: []
+  verification: in_progress
+  tags: [education, gmu]

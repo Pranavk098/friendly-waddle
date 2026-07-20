@@ -1,28 +1,31 @@
 # kb/facts/
 
-Career facts, one YAML list per topic file (e.g. `identity.yaml`, `experience.yaml`, `open_source.yaml`, `projects.yaml`, `skills.yaml`, `education.yaml`, `work_authorization.yaml`, `availability.yaml`, `research.yaml`, `off_limits.yaml` — see spec §1.2 for the full inventory).
+Career facts, one YAML list per topic file (e.g. `identity.yaml`, `experience.yaml`, `open_source.yaml`, `projects.yaml`, `education.yaml`, `work_authorization.yaml`, `availability.yaml`, `research.yaml`, `off_limits.yaml` — see spec §1.2 for the full inventory). `skills.yaml` (the skills matrix) is a separate format handled in a later phase — see spec §1.4 — and is not yet wired into `kb/build.py`.
 
-This directory is intentionally empty as scaffolded in Phase 0 — **populating it is on the user, not Claude Code** (spec §5: "this is mostly you writing truth, Claude Code writing tooling"). `kb/build.py` runs correctly against zero facts (emits a valid, empty compiled KB); it will validate real facts against `../schema/fact.schema.json` as they're added.
+## Provenance convention
 
-Each file is a YAML list of fact objects matching the schema:
+Every fact in this directory is either:
 
-```yaml
-- id: agt-pr-2694
-  category: open_source
-  claim: >
-    Authored and merged PR #2694 in ... [full, truthful, specific claim]
-  evidence:
-    - url: https://github.com/org/repo/pull/2694
-      type: primary        # primary | secondary | self_reported
-  verification: verified   # verified | self_reported | in_progress
-  date: 2026-05
-  tags: [tag1, tag2]
-  metrics:
-    some_number: 1.5
-```
+1. **Sourced** — copied from `pranav-agent-platform-spec.md` §1.2, where it appears as real,
+   specific content (a named PR, a named employer, real-looking evidence URLs). Marked with the
+   verification level the spec itself assigned.
+2. **Placeholder** — `verification: in_progress`, `claim` starting `PLACEHOLDER —`, no evidence.
+   These exist so the file/category structure matches the spec's fact-file inventory, but no
+   factual content has been written for them. Claude did not invent descriptions for named
+   projects/employers/credentials it has no source for — that would violate this project's own
+   hard invariant (never assert an uncited claim).
 
-Rules enforced by `kb/build.py`:
-- Every fact must satisfy `../schema/fact.schema.json` (structural shape).
+**Before Phase 1 ships anything publicly:** replace every placeholder with real claim text (or
+delete the entry), and double-check the two sourced facts (`open_source.yaml`'s `agt-pr-2694`,
+`experience.yaml`'s `atai-tensorrt`) for accuracy — Claude carried these over from the spec
+document but has not independently verified the linked URLs or numbers.
+
+`work_authorization.yaml` is a placeholder and needs particular care — it's legally/personally
+sensitive and must be phrased exactly as you want it stated publicly, not left as a stand-in.
+
+Each file is a YAML list of fact objects matching `../schema/fact.schema.json`. Rules enforced by
+`kb/build.py`:
+- Every fact must satisfy the schema (structural shape).
 - Every `verification: verified` fact must have at least one `evidence` entry with `type: primary`.
 - Fact `id`s must be unique across all files.
 - (CI only) every evidence URL must return 2xx.

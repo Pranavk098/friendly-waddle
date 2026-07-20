@@ -1,0 +1,18 @@
+# Minimal — sourced only from what the spec states directly (name, portfolio domain).
+- id: identity-name-and-site
+  category: identity
+  claim: "Pranav Koduru. Portfolio: pranavkoduru.dev."
+  evidence:
+    - url: https://pranavkoduru.dev
+      type: self_reported
+  verification: self_reported
+  tags: [identity]
+
+# Placeholder — the spec doesn't state a one-line bio/current-focus statement anywhere directly
+# quotable as a personal claim; write your own so the agent doesn't improvise one.
+- id: identity-current-focus-placeholder
+  category: identity
+  claim: "PLACEHOLDER — one or two sentence current focus / headline (what you'd want a recruiter to read first)."
+  evidence: []
+  verification: in_progress
+  tags: [identity]

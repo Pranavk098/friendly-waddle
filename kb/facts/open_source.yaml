@@ -1,0 +1,16 @@
+# Sourced from pranav-agent-platform-spec.md §1.2 (verbatim example fact). Review before Phase 1.
+- id: agt-pr-2694
+  category: open_source
+  claim: >
+    Authored and merged PR #2694 in Microsoft's Agent Governance Toolkit:
+    a LangGraph v1.0 governance adapter with SHA-256 checkpoint
+    fingerprinting, 32 tests, p99 overhead < 0.0012ms. Labeled size/XL.
+  evidence:
+    - url: https://github.com/microsoft/agent-governance-toolkit/pull/2694
+      type: primary
+  verification: verified
+  date: "2026-05"
+  tags: [langgraph, governance, open_source, python, testing]
+  metrics:
+    tests: 32
+    p99_overhead_ms: 0.0012

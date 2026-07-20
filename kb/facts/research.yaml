@@ -1,0 +1,8 @@
+# Placeholder. Spec §1.3 references a long-form doc kb/documents/research/deductive-orchestrator.md
+# (not yet written) — this fact should summarize it once that doc exists.
+- id: research-deductive-orchestrator-placeholder
+  category: research
+  claim: "PLACEHOLDER — one-paragraph summary of the deductive orchestrator research, with a link to kb/documents/research/deductive-orchestrator.md once written."
+  evidence: []
+  verification: in_progress
+  tags: [research, deductive-orchestrator]
