@@ -1,0 +1,25 @@
+# atai-tensorrt: sourced from pranav-agent-platform-spec.md §1.2 (verbatim example). Review before Phase 1.
+# verification: in_progress until pranavkoduru.dev is live (currently NXDOMAIN, confirmed
+# 2026-07-19) — restore to self_reported once the domain resolves. See kb/facts/README.md.
+- id: atai-tensorrt
+  category: experience
+  claim: >
+    Reduced CV inference latency from 8s to 1.5s at ATAI Labs via TensorRT
+    optimization and OpenVINO INT8 quantization on Intel i7 edge servers.
+  evidence:
+    - url: https://pranavkoduru.dev/experience#atai
+      type: self_reported
+  verification: in_progress
+  date_range: ["2021-07", "2023-07"]
+  tags: [tensorrt, openvino, quantization, edge, computer_vision]
+
+# Placeholder — spec §1.2 lists "experience.yaml (ATAI, GMU)" but gives no GMU-specific claim.
+# Replace with real content: what was your role/work at GMU (research assistant? coursework
+# project? something else)? GMU is also plausibly an education entry, not experience — move it
+# to education.yaml if so.
+- id: gmu-experience-placeholder
+  category: experience
+  claim: "PLACEHOLDER — describe your role/work at GMU with specifics and evidence."
+  evidence: []
+  verification: in_progress
+  tags: [gmu]

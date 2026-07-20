@@ -3,6 +3,7 @@ from pathlib import Path
 from typing import Any
 
 import pytest
+import requests
 import yaml
 
 from kb.build import build, check_evidence_urls_live, load_facts, validate_facts
@@ -127,6 +128,37 @@ def test_check_evidence_urls_live_passes_on_2xx(monkeypatch: pytest.MonkeyPatch)
 
     def fake_get(url: str, timeout: float) -> _FakeResponse:
         return _FakeResponse(200)
+
+    monkeypatch.setattr("kb.build.requests.get", fake_get)
+
+    errors = check_evidence_urls_live([fact])
+    assert errors == []
+
+
+def test_check_evidence_urls_live_reports_connection_error_without_crashing(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    fact = _valid_fact(
+        evidence=[{"url": "https://unresolvable.example.invalid/x", "type": "primary"}]
+    )
+
+    def fake_get(url: str, timeout: float) -> _FakeResponse:
+        raise requests.exceptions.ConnectionError("Failed to resolve host")
+
+    monkeypatch.setattr("kb.build.requests.get", fake_get)
+
+    errors = check_evidence_urls_live([fact])
+    assert any("unresolvable.example.invalid" in e for e in errors)
+
+
+def test_check_evidence_urls_live_skips_in_progress_facts(monkeypatch: pytest.MonkeyPatch) -> None:
+    fact = _valid_fact(
+        verification="in_progress",
+        evidence=[{"url": "https://not-yet-live.example.invalid/x", "type": "self_reported"}],
+    )
+
+    def fake_get(url: str, timeout: float) -> _FakeResponse:
+        raise requests.exceptions.ConnectionError("should never be called")
 
     monkeypatch.setattr("kb.build.requests.get", fake_get)
 

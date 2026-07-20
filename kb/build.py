@@ -63,12 +63,22 @@ def validate_facts(facts: list[dict[str, Any]], schema: dict[str, Any]) -> list[
 
 
 def check_evidence_urls_live(facts: list[dict[str, Any]]) -> list[str]:
-    """Fetch every evidence URL and report non-2xx responses. Network I/O — CI only."""
+    """Fetch every evidence URL and report non-2xx responses. Network I/O — CI only.
+
+    Skips facts marked verification: in_progress — their evidence isn't claimed as
+    checkable yet, so an unreachable URL there isn't a real finding.
+    """
     errors: list[str] = []
     for fact in facts:
+        if fact.get("verification") == "in_progress":
+            continue
         for evidence in fact.get("evidence", []):
             url = evidence["url"]
-            response = requests.get(url, timeout=10)
+            try:
+                response = requests.get(url, timeout=10)
+            except requests.exceptions.RequestException as exc:
+                errors.append(f"evidence URL unreachable: {url} ({exc})")
+                continue
             if not (200 <= response.status_code < 300):
                 errors.append(f"evidence URL returned {response.status_code}: {url}")
     return errors
