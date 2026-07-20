@@ -1,11 +1,13 @@
 # Minimal — sourced only from what the spec states directly (name, portfolio domain).
+# verification: in_progress until pranavkoduru.dev is live (currently NXDOMAIN, confirmed
+# 2026-07-19) — restore to self_reported once the domain resolves. See kb/facts/README.md.
 - id: identity-name-and-site
   category: identity
   claim: "Pranav Koduru. Portfolio: pranavkoduru.dev."
   evidence:
     - url: https://pranavkoduru.dev
       type: self_reported
-  verification: self_reported
+  verification: in_progress
   tags: [identity]
 
 # Placeholder — the spec doesn't state a one-line bio/current-focus statement anywhere directly

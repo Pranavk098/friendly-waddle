@@ -149,3 +149,18 @@ def test_check_evidence_urls_live_reports_connection_error_without_crashing(
 
     errors = check_evidence_urls_live([fact])
     assert any("unresolvable.example.invalid" in e for e in errors)
+
+
+def test_check_evidence_urls_live_skips_in_progress_facts(monkeypatch: pytest.MonkeyPatch) -> None:
+    fact = _valid_fact(
+        verification="in_progress",
+        evidence=[{"url": "https://not-yet-live.example.invalid/x", "type": "self_reported"}],
+    )
+
+    def fake_get(url: str, timeout: float) -> _FakeResponse:
+        raise requests.exceptions.ConnectionError("should never be called")
+
+    monkeypatch.setattr("kb.build.requests.get", fake_get)
+
+    errors = check_evidence_urls_live([fact])
+    assert errors == []

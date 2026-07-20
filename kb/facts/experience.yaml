@@ -1,4 +1,6 @@
 # atai-tensorrt: sourced from pranav-agent-platform-spec.md §1.2 (verbatim example). Review before Phase 1.
+# verification: in_progress until pranavkoduru.dev is live (currently NXDOMAIN, confirmed
+# 2026-07-19) — restore to self_reported once the domain resolves. See kb/facts/README.md.
 - id: atai-tensorrt
   category: experience
   claim: >
@@ -7,7 +9,7 @@
   evidence:
     - url: https://pranavkoduru.dev/experience#atai
       type: self_reported
-  verification: self_reported
+  verification: in_progress
   date_range: ["2021-07", "2023-07"]
   tags: [tensorrt, openvino, quantization, edge, computer_vision]
 
